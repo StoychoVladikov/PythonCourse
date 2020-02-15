@@ -26,7 +26,7 @@ class Creature:
     def print_creature_info(self):
         print("Name: " + self.get_name())
         print("Race: " + self.get_race())
-        print("HP: " + str(self.get_hp()))
+        print("HP: {:.2f}".format(self.get_hp()))
         print("Attack Power: " + str(self.get_attack_power()))
 
     def attack(self, creature):
