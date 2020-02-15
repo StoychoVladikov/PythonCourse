@@ -81,6 +81,7 @@ def game_loop():
             else:
                 hero.set_hp(default_hero_hp)
             time.sleep(5)
+            print("Your current health: {:.2f}".format(hero.get_hp()))
         elif cmd == 'l':
             time.sleep(1)
             print("You look around and see: ".format(hero.get_name()))
@@ -100,7 +101,7 @@ def game_loop():
             time.sleep(1)
         elif cmd == 'q':
             time.sleep(1)
-            print("Thanks for playing")
+            print("Thanks for playing, bye")
             time.sleep(1)
             break
         else:
