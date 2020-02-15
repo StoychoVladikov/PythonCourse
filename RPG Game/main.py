@@ -25,14 +25,14 @@ def print_header():
 def game_loop():
     creatures = [Dragon('Renfrir', 'Black Dragon', 150, 75),
                  Bat('Squeeky', "Black Bat", 15, 10),
-                 Wizard('James Gandalfini', "Wizard", 300, 30),
-                 Dragon('Alduin', 'Silver Dragon', 234, 150),
+                 Wizard('James Gandalfini', "Wizard", 200, 30),
+                 Dragon('Alduin', 'Silver Dragon', 234, 100),
                  ]
 
     wizard_name = input("Enter your player name: ")
     print()
     time.sleep(1)
-    hero = Player(wizard_name, "Human", 250, 25, 15)
+    hero = Player(wizard_name, "Human", 250, 50, 15)
     default_hero_hp = 250
     while True:
         active_creature = random.choice(creatures)
@@ -43,7 +43,7 @@ def game_loop():
         time.sleep(2)
         active_creature.print_creature_info()
         print()
-        cmd = input("Do you want to [a]ttack, [r]un away, [l]ook around or [s]how your current character stats? \n")
+        cmd = input("Do you want to [a]ttack, [r]un away, [l]ook around, [s]how your current character stats or [q]uit the game? \n")
         creature_hp = active_creature.get_hp()
         if cmd == 'a':
             time.sleep(1)
@@ -61,6 +61,11 @@ def game_loop():
                 print()
                 time.sleep(2)
                 active_creature.attack(hero)
+                if hero.get_hp() <= 0:
+                    print("Your hp: 0")
+                else:
+                    print("Your hp: {:0.2f}".format(hero.get_hp()))
+                    print()
                 if hero.is_creature_dead():
                     print("Your hero is dead, gg wp")
                     time.sleep(1)
@@ -93,6 +98,11 @@ def game_loop():
             print()
             print("You lost {} hp while wasting your time", active_creature.get_attack_power())
             time.sleep(1)
+        elif cmd == 'q':
+            time.sleep(1)
+            print("Thanks for playing")
+            time.sleep(1)
+            break
         else:
             continue
 
